@@ -24,3 +24,7 @@ export function dateAtOffset(iso: string, offset: number): string {
   if (Number.isNaN(d.getTime())) return '时间未知';
   return d.toISOString().slice(0, 19).replace('T', ' ');
 }
+
+export function formatTimezone(offset: number): string {
+  return `UTC${offset >= 0 ? '+' : '−'}${String(Math.abs(offset)).padStart(2, '0')}:00${offset === 8 ? '（北京时间）' : ''}`;
+}

@@ -271,6 +271,8 @@ textarea:focus-visible {
 }
 .section-heading {
   display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   align-items: center;
   justify-content: space-between;
   margin: 24px 0 16px;

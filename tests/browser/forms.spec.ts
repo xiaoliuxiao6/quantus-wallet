@@ -1,6 +1,23 @@
 import { test, expect } from '@playwright/test';
 import { encodeAddress } from '@polkadot/util-crypto';
 const recipient = encodeAddress(new Uint8Array(32), 189);
+test('timezone shows its full label before opening and after selecting or reloading', async ({
+  page,
+}) => {
+  const picker = page.getByRole('combobox', { name: '记录时区' });
+  await expect(picker.locator('[data-slot=select-value]')).toHaveText(
+    'UTC+08:00（北京时间）',
+  );
+  await picker.click();
+  await page.getByRole('option', { name: 'UTC−05:00', exact: true }).click();
+  await expect(picker.locator('[data-slot=select-value]')).toHaveText(
+    'UTC−05:00',
+  );
+  await page.reload();
+  await expect(picker.locator('[data-slot=select-value]')).toHaveText(
+    'UTC−05:00',
+  );
+});
 test('empty wallet keeps the safety statement close to content', async ({
   page,
 }) => {

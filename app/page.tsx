@@ -68,7 +68,12 @@ import {
   type ChainState,
   type Quote,
 } from '@/lib/wallet/network';
-import { formatQtc, parseQtc, dateAtOffset } from '@/lib/wallet/amount';
+import {
+  formatQtc,
+  parseQtc,
+  dateAtOffset,
+  formatTimezone,
+} from '@/lib/wallet/amount';
 
 type Flow =
   | 'none'
@@ -593,13 +598,12 @@ export default function Home() {
                 }}
               >
                 <SelectTrigger aria-label="记录时区">
-                  <SelectValue />
+                  <SelectValue>{formatTimezone(timezone)}</SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   {Array.from({ length: 27 }, (_, i) => i - 12).map((n) => (
                     <SelectItem key={n} value={String(n)}>
-                      UTC {n >= 0 ? '+' : '−'}
-                      {String(Math.abs(n)).padStart(2, '0')}:00
+                      {formatTimezone(n)}
                     </SelectItem>
                   ))}
                 </SelectContent>
