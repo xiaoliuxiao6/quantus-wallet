@@ -468,7 +468,7 @@ export default function Home() {
                 value={lookup}
                 onChange={(e) => setLookup(e.target.value)}
               />
-              <Button variant="outline" aria-label="查询地址">
+              <Button type="submit" variant="outline" aria-label="查询地址">
                 <Search size={16} />
               </Button>
             </div>
@@ -813,7 +813,7 @@ export default function Home() {
                   }
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  minLength={flow === 'vault' ? 12 : 1}
+                  minLength={flow === 'vault' ? 8 : 1}
                   required
                   autoFocus
                 />
@@ -827,16 +827,16 @@ export default function Home() {
                       autoComplete="new-password"
                       value={repeat}
                       onChange={(e) => setRepeat(e.target.value)}
-                      minLength={12}
+                      minLength={8}
                       required
                     />
                   </label>
                   <p className="notice">
-                    至少 12 位。保险库密码不能找回，请另行保存助记词备份。
+                    至少 8 位。保险库密码不能找回，请另行保存助记词备份。
                   </p>
                 </>
               )}
-              <Button disabled={busy} className="full">
+              <Button type="submit" disabled={busy} className="full">
                 {busy
                   ? '正在解密 / 加密…'
                   : flow === 'vault'
@@ -901,7 +901,7 @@ export default function Home() {
                 下一步将显示 24
                 个助记词。请在安全环境中记录，完成备份验证后才会保存钱包。
               </p>
-              <Button className="full" disabled={busy}>
+              <Button type="submit" className="full" disabled={busy}>
                 {busy ? '正在本地生成…' : '生成助记词'}
               </Button>
             </form>
@@ -982,7 +982,9 @@ export default function Home() {
               >
                 <ArrowLeft /> 返回备份
               </Button>
-              <Button disabled={busy}>确认并保存钱包</Button>
+              <Button type="submit" disabled={busy}>
+                确认并保存钱包
+              </Button>
             </form>
           )}
           {flow === 'import' && (
@@ -1042,7 +1044,7 @@ export default function Home() {
                   <small>派生路径 m/44′/189189′/账户′/0′/0′</small>
                 </label>
               )}
-              <Button className="full" disabled={busy}>
+              <Button type="submit" className="full" disabled={busy}>
                 {busy ? '正在本地验证…' : '验证并导入'}
               </Button>
             </form>
@@ -1094,7 +1096,7 @@ export default function Home() {
                 下一步显示完整地址、金额和预计手续费。保留账户最低余额，预览有效期为
                 60 秒。
               </p>
-              <Button className="full" disabled={busy}>
+              <Button type="submit" className="full" disabled={busy}>
                 {busy ? '本地签名并估算手续费…' : '预览转账'}
               </Button>
             </form>
@@ -1299,7 +1301,11 @@ export default function Home() {
                   required
                 />
               </label>
-              <Button disabled={busy || !restoreText} className="full">
+              <Button
+                type="submit"
+                disabled={busy || !restoreText}
+                className="full"
+              >
                 在本机解密并恢复
               </Button>
             </form>

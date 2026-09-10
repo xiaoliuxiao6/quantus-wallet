@@ -12,7 +12,7 @@
 - 普通 ML-DSA-87 账户，HD 路径 `m/44'/189189'/account'/0'/0'`。
 - 查询余额、转入/转出及系统入账，分页，时区 UTC−12 至 UTC+14，默认 UTC+8。
 - 本地签名、手续费预览、用户确认后广播 `balances.transferKeepAlive`。
-- AES-256-GCM 本地保险库、加密文件备份与恢复、闲置 5 分钟自动锁定。
+- AES-256-GCM 本地保险库（密码至少 8 位）、加密文件备份与恢复、闲置 5 分钟自动锁定。
 
 **Wormhole 挖矿奖励账户使用不同派生路径和证明机制，本版本不支持其生成或支出。** 可以查询公开地址，但不要将普通账户误当作 Wormhole 奖励账户。交易历史受官方索引覆盖和同步延迟影响，广播成功不等于交易执行成功。
 
@@ -38,6 +38,9 @@ npm run dev
 npm run typecheck
 npm test
 PAGES_BASE_PATH=/quantus-wallet npm run build
+# 首次浏览器测试需安装 Chromium（macOS 默认使用已安装的 Chrome）
+npx playwright install chromium
+npm run test:browser
 ```
 
 纯静态产物为 `dist/pages`。GitHub 仓库 Settings → Pages → Source 选择 GitHub Actions；推送 `main` 自动测试、构建并部署。根域部署时不设置 `PAGES_BASE_PATH`。

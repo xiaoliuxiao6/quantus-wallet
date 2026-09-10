@@ -16,6 +16,15 @@ import init, {
   signCall,
 } from '../crypto/pkg/quantus_wasm.js';
 
+test('new vault accepts 8 characters and rejects shorter passwords', async () => {
+  await assert.rejects(createVault('1234567'), /至少 8 位/);
+  const session = await createVault('test1234');
+  assert.deepEqual(
+    (await unlock(session.serialized, 'test1234')).data.wallets,
+    [],
+  );
+});
+
 test('exact QTC arithmetic and timezone day rollover', () => {
   assert.equal(
     parseQtc('9007199254740993.000000000001'),

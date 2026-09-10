@@ -151,7 +151,7 @@ export async function seal(
   }
 }
 export async function createVault(password: string): Promise<Session> {
-  if (password.length < 12) throw Error('请使用至少 12 位的保险库密码');
+  if (password.length < 8) throw Error('请使用至少 8 位的保险库密码');
   const salt = base64(crypto.getRandomValues(new Uint8Array(16))),
     key = await derive(password, salt),
     data = { wallets: [], selectedId: '' };

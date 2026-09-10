@@ -28,6 +28,8 @@ jobs:
       - run: npm run build
         env:
           PAGES_BASE_PATH: /quantus-wallet
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
