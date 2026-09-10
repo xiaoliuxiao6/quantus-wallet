@@ -159,10 +159,9 @@ textarea:focus-visible {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 270px minmax(0, 1fr);
-  min-height: calc(100vh - 88px);
 }
 .wallet-rail {
-  padding: 42px 26px;
+  padding: 28px 26px;
   border-right: 1px solid var(--border);
 }
 .eyebrow {
@@ -207,13 +206,13 @@ textarea:focus-visible {
   margin-top: 5px;
 }
 .wallet-main {
-  padding: 42px 5%;
+  padding: 28px 5%;
 }
 .page-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .page-heading h1 {
   font-size: 26px;
@@ -226,7 +225,7 @@ textarea:focus-visible {
   position: relative;
   overflow: hidden;
   background: linear-gradient(110deg, #1b2a42, #162030);
-  padding: 34px;
+  padding: 24px;
   border: 1px solid #33455e;
   border-radius: 20px;
 }
@@ -274,7 +273,7 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 36px 0 20px;
+  margin: 24px 0 16px;
 }
 .section-heading h2 {
   font-size: 18px;
@@ -286,7 +285,7 @@ textarea:focus-visible {
 .empty-state {
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 38px 20px;
+  padding: 24px 20px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -315,7 +314,7 @@ textarea:focus-visible {
   gap: 8px;
   color: #8293ad;
   font-size: 13px;
-  margin-top: 32px;
+  margin-top: 20px;
 }
 .wallet-dialog {
   max-width: 560px !important;

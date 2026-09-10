@@ -1,6 +1,18 @@
 import { test, expect } from '@playwright/test';
 import { encodeAddress } from '@polkadot/util-crypto';
 const recipient = encodeAddress(new Uint8Array(32), 189);
+test('empty wallet keeps the safety statement close to content', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 1080 });
+  await page.goto('./');
+  const statement = page.getByLabel('安全声明', { exact: true });
+  const box = await statement.boundingBox();
+  expect(box).not.toBeNull();
+  expect(box!.y + box!.height).toBeLessThanOrEqual(1080);
+  const content = await page.locator('.wallet-main > footer').boundingBox();
+  expect(box!.y - (content!.y + content!.height)).toBeLessThanOrEqual(32);
+});
 test.beforeEach(async ({ page }) => {
   // Deterministic offline UI tests: no wallet data or transaction leaves the browser.
   await page.route(
